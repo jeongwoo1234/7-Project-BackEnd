@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.team7.classes.Member;
 import com.google.gson.Gson;
+import com.team7.classes.member.MemberDAO;
+import com.team7.classes.member.MemberDTO;
 
 @WebServlet("/members")
 public class ServletSample extends HttpServlet {
@@ -23,11 +24,10 @@ public class ServletSample extends HttpServlet {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         
-        ArrayList<Member> list = new ArrayList<Member>();
-        list.add(new Member(1, "https://placeimg.com/64/64/1", "이태민", "991230", "남자", "대학생"));
-        list.add(new Member(2, "https://placeimg.com/64/64/2", "이순신", "381004", "남자", "대학생"));
-        list.add(new Member(3, "https://placeimg.com/64/64/3", "홍길동", "520712", "남자", "대학생"));
-        
+        ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
+        MemberDAO memberDAO = new MemberDAO();
+        list = memberDAO.getMembers();
+
         Gson gson = new Gson();
         String memberJson = gson.toJson(list);
         out.write(memberJson);
