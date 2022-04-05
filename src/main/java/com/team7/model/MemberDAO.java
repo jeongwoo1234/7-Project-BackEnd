@@ -1,4 +1,4 @@
-package com.team7.classes.model;
+package com.team7.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
