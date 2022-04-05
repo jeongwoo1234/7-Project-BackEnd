@@ -5,7 +5,7 @@
 
 
 
-### Connection Created to RDS DB by JDBC
+### Connection to RDS DB Created by JDBC
 `mysql-connector-java-8.0.27.jar` is required
 
 #### Tech
