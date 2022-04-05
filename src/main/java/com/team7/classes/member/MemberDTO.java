@@ -1,6 +1,6 @@
-package com.team7.classes;
+package com.team7.classes.member;
 
-public class Member {
+public class MemberDTO {
 	
 	private int id;
 	private String image;
@@ -8,16 +8,6 @@ public class Member {
 	private String birthday;
 	private String gender;
 	private String job;
-	
-	public Member(int id, String image, String name, String birthday, String gender, String job) {
-		super();
-		this.id = id;
-		this.image = image;
-		this.name = name;
-		this.birthday = birthday;
-		this.gender = gender;
-		this.job = job;
-	}
 
 	public int getId() {
 		return id;
