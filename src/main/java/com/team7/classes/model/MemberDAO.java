@@ -22,7 +22,6 @@ public class MemberDAO {
 	public ArrayList<MemberDTO> getMembers() {
 		String sql = "SELECT * FROM member";
 		ArrayList<MemberDTO> memberList = new ArrayList<MemberDTO>();
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
