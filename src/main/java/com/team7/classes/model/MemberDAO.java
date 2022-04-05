@@ -1,18 +1,14 @@
-package com.team7.classes.member;
+package com.team7.classes.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
-
-import com.team7.classes.connectDB.connectDB;
 
 public class MemberDAO {
 
 	private Connection conn = null;
 	private PreparedStatement pstmt;
-	private Statement stmt;
 	private ResultSet rs;
 	
 	public MemberDAO() {
