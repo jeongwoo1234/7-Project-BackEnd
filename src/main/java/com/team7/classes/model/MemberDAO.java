@@ -12,7 +12,7 @@ public class MemberDAO {
 	private ResultSet rs;
 	
 	public MemberDAO() {
-		try {
+		try { 
 			conn = connectDB.getRemoteConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
