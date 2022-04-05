@@ -16,6 +16,8 @@ import com.google.gson.Gson;
 @WebServlet("/members")
 public class ServletSample extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("utf-8");
         response.setContentType("application/json");
