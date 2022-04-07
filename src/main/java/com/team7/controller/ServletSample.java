@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.team7.classes.model.MemberDAO;
-import com.team7.classes.model.MemberDTO;
+import com.team7.model.MemberDAO;
+import com.team7.model.MemberDTO;
 
 @WebServlet("/members")
 public class ServletSample extends HttpServlet {
