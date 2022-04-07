@@ -11,14 +11,13 @@ public class MemberDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
+	// DB와 Connection 생성
 	public MemberDAO() {
-		try {
-			conn = connectDB.getRemoteConnection();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		try { conn = connectDB.getRemoteConnection(); } 
+		catch (Exception e) { e.printStackTrace(); }
 	}
 	
+	// 모든 member 정보를 포함한 ArrayList 반환
 	public ArrayList<MemberDTO> getMembers() {
 		String sql = "SELECT * FROM member";
 		ArrayList<MemberDTO> memberList = new ArrayList<MemberDTO>();
@@ -38,10 +37,25 @@ public class MemberDAO {
 			rs.close();
 			pstmt.close();
 			conn.close();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return memberList;
 	}
 	
+	public int insertMember(String image, String name, String birthday, String gender, String job) {
+		String sql = "INSERT INTO member VALUES(NULL, ?, ?, ?, ?, ?)";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, image);
+			pstmt.setString(2, name);
+			pstmt.setString(3, birthday);
+			pstmt.setString(4, gender);
+			pstmt.setString(5, job);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
 }

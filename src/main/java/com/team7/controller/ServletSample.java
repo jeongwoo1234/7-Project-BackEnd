@@ -22,7 +22,6 @@ public class ServletSample extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("utf-8");
         response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
         
         ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
         MemberDAO memberDAO = new MemberDAO();
@@ -30,9 +29,10 @@ public class ServletSample extends HttpServlet {
 
         Gson gson = new Gson();
         String memberJson = gson.toJson(list);
+        
+        PrintWriter out = response.getWriter();
         out.write(memberJson);
-        out.flush();
-        out.close();
+        out.flush(); out.close();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
