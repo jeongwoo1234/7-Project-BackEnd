@@ -1,23 +1,26 @@
-package com.team7.model;
+package com.team7.model.member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
+import com.team7.model.connectDB;
 
 public class MemberDAO {
 
 	private Connection conn = null;
+	private Statement stmt;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-	// DB와 Connection 생성
+	// Get DB Connection to AWS RDS
 	public MemberDAO() {
 		try { conn = connectDB.getRemoteConnection(); } 
 		catch (Exception e) { e.printStackTrace(); }
 	}
 	
-	// 모든 member 정보를 포함한 ArrayList 반환
+	// return all Members type ArrayList
 	public ArrayList<MemberDTO> getMembers() {
 		String sql = "SELECT * FROM member";
 		ArrayList<MemberDTO> memberList = new ArrayList<MemberDTO>();
@@ -34,15 +37,14 @@ public class MemberDAO {
 				m.setJob(rs.getString(6));
 				memberList.add(m);
 			}
-			rs.close();
-			pstmt.close();
-			conn.close();
+			rs.close(); pstmt.close(); conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return memberList;
 	}
 	
+	// Insert new Member
 	public int insertMember(String image, String name, String birthday, String gender, String job) {
 		String sql = "INSERT INTO member VALUES(NULL, ?, ?, ?, ?, ?)";
 		try {
