@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.team7.model.MemberDAO;
-import com.team7.model.MemberDTO;
+import com.team7.model.member.MemberDAO;
+import com.team7.model.member.MemberDTO;
 
 @WebServlet("/members")
 public class ServletSample extends HttpServlet {
@@ -20,6 +20,7 @@ public class ServletSample extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("members 요청");
 		response.setCharacterEncoding("utf-8");
         response.setContentType("application/json");
         

@@ -1,4 +1,4 @@
-package com.team7.model;
+package com.team7.model.member;
 
 public class MemberDTO {
 	
