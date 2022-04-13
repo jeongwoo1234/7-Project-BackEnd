@@ -1,0 +1,291 @@
+로그인
+
+POST /user/login
+
+request {
+	"user_id" : "abc",
+	"pw" : " "
+}
+
+response
+SUCCESS { "code" : 200, "message" : "Success" }
+FAIL { "code : 500, "message" : "Fail" }
+
+회원가입
+
+POST /user
+
+request {
+	"user_id" : "abc",
+	"pw" : " ",
+	"email" : "abc@def",
+	"name" : "홍길동",
+	"job" : "대학생",
+	"category" : "###"
+}
+
+response
+SUCCESS { "code" : 200, "message" : "Success" }
+FAIL { "code : 500, "message" : "Fail" }
+
+비밀번호 변경
+
+PUT /user/{user_id}
+
+request {
+	"pw" : " "
+}
+
+response
+SUCCESS { "code" : 200, "message" : "Success" }
+FAIL { "code : 500, "message" : "Fail" }
+
+회원탈퇴
+
+DELETE /user/{user_id}
+
+response
+SUCCESS { "code" : 200, "message" : "Success" }
+FAIL { "code : 500, "message" : "Fail" }
+
+피드 리스트
+
+GET /feeds
+
+response
+SECCESS { "code" : 200, "message" : "Success", "data" : [ {
+	"feed_seq" : 1,
+	"content" : "######",
+	"name" : "홍길동",
+	"release" : "#",
+	"time" : "2022-01-01"
+	}, {
+	"feed_seq" : 2,
+	"content" : "######",
+	"name" : "캡스톤",
+	"release" : "#",
+	"time" : "2022-01-01"
+} ] }
+FAIL { "code" : 500, "message" : "Fail" }
+
+유저생성 피드
+
+POST /feeds/uflist
+
+request {
+	"uf_name" : "새 피드라인",
+	"category" : "###",
+	"order" : 1
+}
+
+response
+SUCCESS { "code" : 200, "message" : "Success" }
+FAIL { "code : 500, "message" : "Fail" }
+
+피드 상세
+
+GET /feeds/{feed_seq}
+
+response
+SECCESS { "code" : 200, "message" : "Success", "data" : [ {
+	"feed_seq" : 1,
+	"content" : "######",
+	"name" : "홍길동",
+	"release" : "#",
+	"time" : "2022-01-01"
+} ] }
+FAIL { "code" : 500, "message" : "Fail" }
+
+피드 생성
+
+POST /feeds
+request {
+	 "user_id" = "홍길동",
+	 "content" = "#######",
+	 "category" = "###",
+	 "release" = "#"
+}
+
+response
+SUCCESS { "code" : 200, "message" : "Success" }
+FAIL { "code : 500, "message" : "Fail" }
+
+미디어 추가
+
+POST /feeds/
+
+request {
+	"file_name" = "###.png"
+}
+
+response
+SUCCESS { "code" : 200, "message" : "Success" }
+FAIL { "code : 500, "message" : "Fail" }
+
+피드 수정
+
+PUT /feeds/{feed_seq}
+
+request {
+	 "content" = "###",
+	 "category" = "###",
+	 "release" = "#"
+}
+
+response
+SUCCESS { "code" : 200, "message" : "Success" }
+FAIL { "code : 500, "message" : "Fail" }
+
+피드 삭제
+
+DELETE /feeds/{feed_seq}
+
+response
+SUCCESS { "code" : 200, "message" : "Success" }
+FAIL { "code : 500, "message" : "Fail" }
+
+댓글 리스트
+
+GET /feeds/{feed_seq}/feedcomment
+
+response
+SECCESS { "code" : 200, "message" : "Success", "data" : [ {
+	"content" : "######",
+	"name" : "홍길동",
+	"time" : "2022-01-01"
+} ] }
+FAIL { "code" : 500, "message" : "Fail" }
+
+댓글 생성
+
+POST /feeds/{feed_seq}/feedcomment
+
+request {
+	  "user_id" = "abc"
+	  "content" = "###"
+}
+
+response
+SUCCESS { "code" : 200, "message" : "Success" }
+FAIL { "code : 500, "message" : "Fail" }
+
+댓글 수정
+
+PUT /feeds/{feed_seq}/feedcomment
+
+request {
+	 "content" = "###"
+}
+
+response
+SUCCESS { "code" : 200, "message" : "Success" }
+FAIL { "code : 500, "message" : "Fail" }
+
+댓글 삭제
+
+DELETE /feeds/{feed_seq}/feedcomment
+
+response
+SUCCESS { "code" : 200, "message" : "Success" }
+FAIL { "code : 500, "message" : "Fail" }
+
+좋아요 
+
+PUT /feeds/{feed_seq}/likes
+
+request {
+	"type" : 1
+}
+
+tofollow 리스트
+
+GET /user/{user_id}/followlist_to
+
+response
+SECCESS { "code" : 200, "message" : "Success", "data" : [ {
+	"to_follow" : "홍길동",
+	"job" : "대학생",
+	"category" : "###" }, {
+	"to_follow" : "캡스톤",
+	"job" : "고등학생",
+	"category" : "###"
+} ] }
+FAIL { "code" : 500, "message" : "Fail" }
+
+fromfollow 리스트
+
+GET /user/{user_id}/followlist_from
+
+response
+SECCESS { "code" : 200, "message" : "Success", "data" : [ {
+	"from_follow" : "홍길동",
+	"job" : "대학생",
+	"category" : "###" }, {
+	"from_follow" : "캡스톤",
+	"job" : "고등학생",
+	"category" : "###"
+} ] }
+FAIL { "code" : 500, "message" : "Fail" }
+
+프로필
+
+GET /user{user_id}
+
+response
+SUCCESS { "code" : 200, "message" : "Success" , "data" : [ {
+	"name" = "홍길동",
+	"email" = "abc@def",
+	"job" = "대학생",
+	"category" = "###",
+	"to_follow" = 1,
+	"from_follow" = 2
+} ] }
+FAIL { "code" : 500, "message" : "Fail" }
+
+프로필 피드
+
+GET /feeds/{user_id}
+
+response 
+SUCCESS { "code" : 200, "message" : "Success" , "data" : [ {
+	"feed_seq" : 1,
+	"name" : "홍길동",
+	"content" : "######",
+	"time" : "2022-01-01"
+	},
+	{
+	"feed_seq" : 2,
+	"name" : "캡스톤",
+	"content" : "######",
+	"time" : "2022-01-01"
+} ] }
+FAIL { "code" : 500, "message" : "Fail" }
+
+설정
+
+GET /user/{user_id}/setting
+
+response
+SECCESS { "code" : 200, "message" : "Success", "data" : [ {
+	"user_id" : "abc",
+	"pw" : " ",
+	"name" : "홍길동",
+	"email" : "abc@def"
+} ] }
+FAIL { "code" : 500, "message" : "Fail" }
+
+차단 (임시)
+
+POST /user/{user_id}/block
+
+request {
+	"user_id" :  "bcd"
+}
+
+response
+SUCCESS { "code" : 200, "message" : "Success" }
+FAIL { "code : 500, "message" : "Fail" }
+
+message (임시)
+
+POST /user/{user_id}/message
